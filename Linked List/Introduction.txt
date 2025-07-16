@@ -1,0 +1,35 @@
+Linked List
+============
+
+A Linked List is a linear data structure in which elements (called nodes) are connected using pointers. 
+
+Each node contains:
+A value (the actual data)
+A reference (or pointer) to the next node (and optionally to the previous node in doubly linked lists)
+
+Types of Linked Lists:
+=====================
+1. Singly Linked List
+   -------------------
+    value: the data part
+    next: a pointer/reference to the next node
+    It moves only in one direction (forward)
+    Structure: [value | next] -> [value | next] -> [value | null]
+
+2. Doubly Linked List
+   ------------------
+    value: the data
+    next: pointer to the next node
+    prev: pointer to the previous node
+    Allows bidirectional traversal
+    Structure: null <- [prev | value | next] <-> [prev | value | next] -> null
+
+Key Terminologies:
+    -------------
+    Head: The first node of a linked list. It marks the entry point and points to the next node.
+    Tail: The last node of a linked list. It points to null because there’s no node after it.
+    Linked List Representation: It is typically represented using its head node.
+
+Array vs Linked List — Comparison Table: Refere Namaste DSA Notes or any resources 
+
+Use Cases: When to Use What? - Refere Namaste DSA Notes or any resources 
