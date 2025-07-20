@@ -19,14 +19,40 @@ Time Complexity: O(n·k·log k), where n is the number of strings and k is the
 Space Complexity: O(n·k), for storing grouped anagrams
 */
 
-var groupAnagrams = function(strs) {
+//Sorted Key Approach
+var groupAnagrams = function (strs) {
     let map = {}
-    for(let i = 0; i < strs.length; i++){
+    for (let i = 0; i < strs.length; i++) {
         let sortedStr = strs[i].split("").sort().join("");
-        if(!map[sortedStr]){
+        if (!map[sortedStr]) {
             map[sortedStr] = [strs[i]];
-        }else{
-             map[sortedStr].push(strs[i]);
+        } else {
+            map[sortedStr].push(strs[i]);
+        }
+    }
+    return [...Object.values(map)];
+};
+
+//Using hashed Key 
+var groupAnagrams = function (strs) {
+    let map = {};
+    for (let i = 0; i < strs.length; i++) {
+        //Create the key 
+        let freqArr = Array(26).fill(0);
+        let s = strs[i];
+        for (let j = 0; j < s.length; j++) {
+            let index = s[j].charCodeAt() - 'a'.charCodeAt();
+            ++freqArr[index];
+        }
+        let key = "";
+        for (let k = 0; k < 26; k++) {
+            key = key + String.fromCharCode(k) + freqArr[k];
+        }
+        //Fill the map 
+        if (!map[key]) {
+            map[key] = [s];
+        } else {
+            map[key].push(s);
         }
     }
     return [...Object.values(map)];
