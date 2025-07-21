@@ -73,20 +73,52 @@ Return the final ansstring.
  */
 
 //Using Stack
-var removeOuterParentheses = function(s) {
+var removeOuterParentheses = function (s) {
     let stack = [];
     let ans = "";
-    for(let i = 0; i < s.length; i++){
-        if(s[i] === "("){
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(") {
             stack.push(s[i]);
-            if(stack.length > 1){
+            if (stack.length > 1) {
                 ans = ans + s[i];
             }
-        }else{
-            if(stack.length > 1){
+        } else {
+            if (stack.length > 1) {
                 ans = ans + s[i];
             }
             stack.pop();
+        }
+    }
+    return ans;
+};
+
+//Without using Stack
+/*
+Second Approach: Without Stack
+Initialize: a counter level to -1 and an empty string ans.
+Traverse each character of the string s.
+If the character is '('
+Increment level.
+If level is not 0, append '(' to ans.
+If the character is ')'
+If level is not 0, append ')' to ans.
+Then decrement level.
+Return the final ans string.
+*/
+var removeOuterParentheses = function (s) {
+    let level = 0;
+    let ans = "";
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(") {
+            ++level;
+            if (level > 1) {
+                ans = ans + s[i];
+            }
+        } else {
+            if (level > 1) {
+                ans = ans + s[i];
+            }
+            --level;
         }
     }
     return ans;
